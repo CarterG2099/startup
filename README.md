@@ -18,19 +18,19 @@ Trying to eat healthier or struggling to keep all of your favorite recipes organ
 - Reviews are displayed for each recipe
 
 ## Technologies
-- ### HTML - Four HTML pages, one for login, signup, reviews, and recipes. Hyperlinks connect recipes and reviews
-- ### CSS - Used to display recipes and nutritional information in a simple clean format that is easily readable on multiple screen sizes.
-- ### JavaScript - Provides login, choice display, applying votes, display number of votes, backend endpoint calls.
-- ### Service - Backend service with endpoints for:
+- **HTML** - Four HTML pages, one for login, signup, reviews, and recipes. Hyperlinks connect recipes and reviews
+- **CSS** - Used to display recipes and nutritional information in a simple clean format that is easily readable on multiple screen sizes.
+- **JavaScript** - Provides login, choice display, applying votes, display number of votes, backend endpoint calls.
+- **Service** - Backend service with endpoints for:
   - Login
   - submitting votes
   - submitting reviews
   - retrieving votes
   - submitting recipes
   - displaying recipes
-- ### DB/Login - Store users, votes, and reviews in the database. Register and login users with their credentials stored securely in database. Can't vote, upload recipes, or add reviews unless authenticated.
-- ### WebSocket - User-added reviews and recipes are pulled from the webserver. Votes are displayed for all users.
-- ### React - Applicated ported to use the React web framework.
+- **DB/Login** - Store users, votes, and reviews in the database. Register and login users with their credentials stored securely in database. Can't vote, upload recipes, or add reviews unless authenticated.
+- **WebSocket** - User-added reviews and recipes are pulled from the webserver. Votes are displayed for all users.
+- **React** - Applicated ported to use the React web framework.
 
 ## HTML Deliverable
 
