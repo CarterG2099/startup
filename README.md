@@ -5,8 +5,8 @@ Trying to eat healthier or struggling to keep all of your favorite recipes organ
 ## Design
 ![](images/home.png)
 ![](images/reviews.png)
-![](images/signup)
-![](images/login)
+![](images/signup.png)
+![](images/login.png)
 
 
 ## Key Features
