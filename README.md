@@ -10,8 +10,16 @@ Trying to eat healthier or struggling to keep all of your favorite recipes organ
 
 
 ## Key Features
+- Secure login over HTTPS
+- Ability to upload recipes
+- Ability to vote on recipes
+- Ordering of recipes based on votes
+- Reviews can be added and stored persistently
+- Reviews are displayed for each recipe
 
 ## Technologies
+- # HTML - 
+- # CSS - 
 
 ## HTML Deliverable
 
