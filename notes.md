@@ -26,4 +26,6 @@
 ## Caddy 
 - Caddy is a web service that listens for incoming HTTP requests. Caddy then either serves up the requested static files or routes the request to another web service
 - **Gateway/Reverse Proxy:** Ability to route requests and allows you to expose multiple web services (i.e. your project services) as a single external web service
+- **HTML Files:** Are served by caddy in the **public** directory when sshing
+  
 
