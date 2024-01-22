@@ -22,4 +22,5 @@
       - SOA (Start of Authority) Record: Provides contact information about the owner of this domain name.
       - NS (Name Server) Record: Contains the names of the authoritative name servers that authorize you to place DNS records in this DNS server.
 - **TLD**: Top-Level Domain: Organize and group sites (.click)
+## Caddy
 
