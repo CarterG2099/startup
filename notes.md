@@ -23,5 +23,7 @@
       - SOA (Start of Authority) Record: Provides contact information about the owner of this domain name.
       - NS (Name Server) Record: Contains the names of the authoritative name servers that authorize you to place DNS records in this DNS server.
 - **TLD**: Top-Level Domain: Organize and group sites (.click)
-## Caddy
+## Caddy 
+- Caddy is a web service that listens for incoming HTTP requests. Caddy then either serves up the requested static files or routes the request to another web service
+- **Gateway/Reverse Proxy:** Ability to route requests and allows you to expose multiple web services (i.e. your project services) as a single external web service
 
