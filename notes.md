@@ -4,7 +4,7 @@
 
 - **IP Address** http://50.19.114.36
 - ssh -i keypair260.pem ubuntu@50.19.114.36
-**Technology Stack:** Software that a particular company uses to develop/maintain their product. There are acronyms for more common stacks but most stacks are dependent upon company needs
+- **Technology Stack:** Software that a particular company uses to develop/maintain their product. There are acronyms for more common stacks but most stacks are dependent upon company needs
 
 ## AWS EC2
 - Instance: Virtual Server that uses hardware in N Virginia
