@@ -5,7 +5,7 @@
 - **IP Address** http://50.19.114.36
 - ssh -i keypair260.pem ubuntu@50.19.114.36
 
-##AWS EC2
+## AWS EC2
 - Instance: Virtual Server that uses hardware in N Virginia
 - Terminating: Destroys virtual server
 - Stopping: Powers down device
