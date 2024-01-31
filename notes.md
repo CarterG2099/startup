@@ -5,6 +5,7 @@
 - **IP Address** http://50.19.114.36
 - ssh -i keypair260.pem ubuntu@50.19.114.36
 - **Technology Stack:** Software that a particular company uses to develop/maintain their product. There are acronyms for more common stacks but most stacks are dependent upon company needs
+- ./deployFiles.sh -k ~/.ssh/keypair260.pem -h pronutrilog.click -s simon
 
 ## AWS EC2
 - Instance: Virtual Server that uses hardware in N Virginia
@@ -35,5 +36,5 @@
     - The certificate issuer is responsible for verifying that the certificate owner actually owns the domain name represented by the certificate.
     - Certificates have to be renewed - Caddy uses "Let's Encrypt" to safely and freely renew the certification with new encryption.
     - **ACME** is the protocol for communication between certificate authorities. (Built into Caddy and many other softwares)
-  
+   
 
