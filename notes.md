@@ -3,9 +3,11 @@
 - Commit essentially saves your changes, push then updates the changes to main file and pull updates file on separate computer
 
 - **IP Address** http://50.19.114.36
-- ssh -i keypair260.pem ubuntu@pronutrilog.click
 - **Technology Stack:** Software that a particular company uses to develop/maintain their product. There are acronyms for more common stacks but most stacks are dependent upon company needs
+
+## Quick Copy
 - ./deployFiles.sh -k ~/.ssh/keypair260.pem -h pronutrilog.click -s startup
+- ssh -i keypair260.pem ubuntu@pronutrilog.click
 
 ## AWS EC2
 - Instance: Virtual Server that uses hardware in N Virginia
