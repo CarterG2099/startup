@@ -41,6 +41,12 @@ Trying to eat healthier or struggling to keep all of your favorite recipes organ
 - Recipes and reviews stored in the database and loaded
 
 ## CSS Deliverable
+- **Header, footer and main content body**
+- **Navigation elements** - I dropped the underlines and made them horizontal. Also changed the color
+- **Responsive to window resizing** - It dynamically adjusts based on the window size
+- **Application elements** - Everything is visible and follows a theme
+- **Application text content** - consistent fonts and varying sizes to emphasize importance
+- **Application images** - Added border to the images and made them similar in size
 
 ## JavaScript Deliverable
 
