@@ -87,15 +87,15 @@ man - Look up a command in the manual
 Matches the character itself: a, b, c, !, $, etc.
 
 **Metacharacters:**
-. (dot): Matches any single character except newline.
-^ (caret): Matches the beginning of the string.
-$ (dollar sign): Matches the end of the string.
-[] (square brackets): Matches a character set. Ex: [abc] matches any of the characters 'a', 'b', or 'c'.
-- (hyphen): Defines a range within a character set. Ex: [a-z] matches any lowercase letter from 'a' to 'z'.
-\w (word character): Matches any alphanumeric character or underscore.
-\d (digit): Matches any single digit (0-9).
-\s (whitespace): Matches any whitespace character (space, tab, newline, etc.).
-\b (word boundary): Matches the boundary between a word and a non-word character.
+- . (dot): Matches any single character except newline.
+- ^ (caret): Matches the beginning of the string.
+- $ (dollar sign): Matches the end of the string.
+- [] (square brackets): Matches a character set. Ex: [abc] matches any of the characters 'a', 'b', or 'c'.
+- - (hyphen): Defines a range within a character set. Ex: [a-z] matches any lowercase letter from 'a' to 'z'.
+- \w (word character): Matches any alphanumeric character or underscore.
+- \d (digit): Matches any single digit (0-9).
+- \s (whitespace): Matches any whitespace character (space, tab, newline, etc.).
+- \b (word boundary): Matches the boundary between a word and a non-word character.
 
 **Quantifiers:**
 '*' (asterisk): Matches the preceding character zero or more times. Ex: ab*c matches "ac", "abc", "abbc", etc.
