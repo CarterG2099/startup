@@ -99,9 +99,9 @@ $ (dollar sign): Matches the end of the string.
 \b (word boundary): Matches the boundary between a word and a non-word character.
 Quantifiers:
 
-* (asterisk): Matches the preceding character zero or more times. Ex: ab*c matches "ac", "abc", "abbc", etc.
-+ (plus sign): Matches the preceding character one or more times. Ex: ab+c matches "abc", "abbc", "abbbc", etc., but not "ac".
-? (question mark): Matches the preceding character zero or one time. Ex: colou?r matches both "color" and "colour".
+'*' (asterisk): Matches the preceding character zero or more times. Ex: ab*c matches "ac", "abc", "abbc", etc.
+'+' (plus sign): Matches the preceding character one or more times. Ex: ab+c matches "abc", "abbc", "abbbc", etc., but not "ac".
+'?' (question mark): Matches the preceding character zero or one time. Ex: colou?r matches both "color" and "colour".
 {n}: Matches the preceding character exactly n times. Ex: ab{2}c matches "abbc".
 {n,m}: Matches the preceding character at least n but no more than m times. Ex: a{2,3}b matches "aabb" or "aaab".
 Grouping:
@@ -109,12 +109,12 @@ Grouping:
 () (parentheses): Groups characters to define a subexpression. Ex: (ab)+c matches "abcabcabc".
 Backreferences:
 
-\n (backslash followed by a number): Matches the nth captured group in the pattern. Ex: (\d{3})-(\d{3})-(\d{4}) captures three groups of digits in a phone number format.
+'\n' (backslash followed by a number): Matches the nth captured group in the pattern. Ex: (\d{3})-(\d{3})-(\d{4}) captures three groups of digits in a phone number format.
 Special Sequences:
 
-\t: Matches a tab character.
-\n: Matches a newline character.
-\r: Matches a carriage return character.
+'\t': Matches a tab character.
+'\n': Matches a newline character.
+'\r': Matches a carriage return character.
 Flags:
 
 i (case-insensitive): Makes the pattern case-insensitive.
