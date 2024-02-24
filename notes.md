@@ -83,11 +83,10 @@ dig - Show the DNS information for a domain
 man - Look up a command in the manual
 
 ## Regular Expression Syntax
-Literal Characters:
-
+**Literal Characters:**
 Matches the character itself: a, b, c, !, $, etc.
-Metacharacters:
 
+**Metacharacters:**
 . (dot): Matches any single character except newline.
 ^ (caret): Matches the beginning of the string.
 $ (dollar sign): Matches the end of the string.
@@ -97,26 +96,26 @@ $ (dollar sign): Matches the end of the string.
 \d (digit): Matches any single digit (0-9).
 \s (whitespace): Matches any whitespace character (space, tab, newline, etc.).
 \b (word boundary): Matches the boundary between a word and a non-word character.
-Quantifiers:
 
+**Quantifiers:**
 '*' (asterisk): Matches the preceding character zero or more times. Ex: ab*c matches "ac", "abc", "abbc", etc.
 '+' (plus sign): Matches the preceding character one or more times. Ex: ab+c matches "abc", "abbc", "abbbc", etc., but not "ac".
 '?' (question mark): Matches the preceding character zero or one time. Ex: colou?r matches both "color" and "colour".
 {n}: Matches the preceding character exactly n times. Ex: ab{2}c matches "abbc".
 {n,m}: Matches the preceding character at least n but no more than m times. Ex: a{2,3}b matches "aabb" or "aaab".
-Grouping:
 
+**Grouping:**
 () (parentheses): Groups characters to define a subexpression. Ex: (ab)+c matches "abcabcabc".
 Backreferences:
 
 '\n' (backslash followed by a number): Matches the nth captured group in the pattern. Ex: (\d{3})-(\d{3})-(\d{4}) captures three groups of digits in a phone number format.
-Special Sequences:
 
+**Special Sequences:**
 '\t': Matches a tab character.
 '\n': Matches a newline character.
 '\r': Matches a carriage return character.
-Flags:
 
+**Flags:**
 i (case-insensitive): Makes the pattern case-insensitive.
 g (global): Matches all occurrences of the pattern in the string.
 m (multiline): Treats the string as multiple lines for anchors like ^ and $.
