@@ -54,6 +54,12 @@
 - var: function scoped
 - let: block scoped within {}
 
+## TCP/IP Layers
+- Application: (HTTPS)	Functionality like web browsing
+- Transport: (TCP) Moving connection information packets
+- Internet: (IP) Establishing connections
+- Link:	(Google Fiber) Hardware	Physical connections
+
 
 
 ## Console Command List
