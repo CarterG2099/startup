@@ -19,6 +19,7 @@
 - Creating Domain name allows for HTTPS - not available with just an ip address
 - **DNS**: Domain Name System
   - **Domain Name**: pronutrilog.click
+      - Use 'dig' [domain name] to get IP Address
   - **IP Address**: Unique for each device. DNS translates it to domain name.
   - **DNS Record**: Contains information that maps domain names to specific resources, such as IP addresses or other services
       - A type record: Represents root domain and public IP Address
@@ -26,6 +27,9 @@
       - SOA (Start of Authority) Record: Provides contact information about the owner of this domain name.
       - NS (Name Server) Record: Contains the names of the authoritative name servers that authorize you to place DNS records in this DNS server.
 - **TLD**: Top-Level Domain: Organize and group sites (.click)
+    - The possible list of TLDs is controlled by ICANN, one of the governing boards of the internet.
+    - Root domain: byu.edu google.com startup.click
+    - whois [root domain]: Gives info about root domain 
 ## Caddy 
 - Caddy is a web service that listens for incoming HTTP requests. Caddy then either serves up the requested static files or routes the request to another web service
 - **Gateway/Reverse Proxy:** Ability to route requests and allows you to expose multiple web services (i.e. your project services) as a single external web service
@@ -59,6 +63,10 @@
 - Transport: (TCP) Moving connection information packets
 - Internet: (IP) Establishing connections
 - Link:	(Google Fiber) Hardware	Physical connections
+
+## Web Servers
+- **Microservices:** Web services that provide a single functional purpose
+- **We Service Gateway:** Looks at the request and maps it to the other services running on a different ports. Commonly on port 443
 
 
 
