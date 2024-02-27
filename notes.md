@@ -19,6 +19,7 @@
 - Creating Domain name allows for HTTPS - not available with just an ip address
 - **DNS**: Domain Name System
   - **Domain Name**: pronutrilog.click
+      - Use 'dig' [domain name] to get IP Address
   - **IP Address**: Unique for each device. DNS translates it to domain name.
   - **DNS Record**: Contains information that maps domain names to specific resources, such as IP addresses or other services
       - A type record: Represents root domain and public IP Address
@@ -26,6 +27,9 @@
       - SOA (Start of Authority) Record: Provides contact information about the owner of this domain name.
       - NS (Name Server) Record: Contains the names of the authoritative name servers that authorize you to place DNS records in this DNS server.
 - **TLD**: Top-Level Domain: Organize and group sites (.click)
+    - The possible list of TLDs is controlled by ICANN, one of the governing boards of the internet.
+    - Root domain: byu.edu google.com startup.click
+    - whois [root domain]: Gives info about root domain 
 ## Caddy 
 - Caddy is a web service that listens for incoming HTTP requests. Caddy then either serves up the requested static files or routes the request to another web service
 - **Gateway/Reverse Proxy:** Ability to route requests and allows you to expose multiple web services (i.e. your project services) as a single external web service
@@ -44,5 +48,91 @@
 - table structure:
     - table - thead - tr - td
     - ul - li
-   
+
+## Review
+- You can load fonts from Google with
+- CSS Box Model: Margin, Border, Padding, Content
+- Padding puts space around content
+- chmod +x deploy.sh makes script executable
+      - sudo executes the file
+- var: function scoped
+- let: block scoped within {}
+
+## TCP/IP Layers
+- Application: (HTTPS)	Functionality like web browsing
+- Transport: (TCP) Moving connection information packets
+- Internet: (IP) Establishing connections
+- Link:	(Google Fiber) Hardware	Physical connections
+
+## Web Servers
+- **Microservices:** Web services that provide a single functional purpose
+- **We Service Gateway:** Looks at the request and maps it to the other services running on a different ports. Commonly on port 443
+
+
+
+## Console Command List
+- echo - Output the parameters of the command
+- cd - Change directory
+- mkdir - Make directory
+- rmdir - Remove directory
+- rm - Remove file(s)
+- mv - Move file(s)
+- cp - Copy files
+- ls - List files
+- curl - Command line client URL browser
+- grep - Regular expression search
+- find - Find files
+- top - View running processes with CPU and memory usage
+- df - View disk statistics
+- cat - Output the contents of a file
+- less - Interactively output the contents of a file
+- wc - Count the words in a file
+- ps - View the currently running processes
+- kill - Kill a currently running process
+- sudo - Execute a command as a super user (admin)
+- ssh - Create a secure shell on a remote computer
+- scp - Securely copy files to a remote computer
+- history - Show the history of commands
+- ping - Check if a website is up
+- tracert - Trace the connections to a website
+- dig - Show the DNS information for a domain
+- man - Look up a command in the manual
+
+## Regular Expression Syntax
+**Literal Characters:**
+Matches the character itself: a, b, c, !, $, etc.
+
+**Metacharacters:**
+- . (dot): Matches any single character except newline.
+- ^ (caret): Matches the beginning of the string.
+- $ (dollar sign): Matches the end of the string.
+- [] (square brackets): Matches a character set. Ex: [abc] matches any of the characters 'a', 'b', or 'c'.
+- - (hyphen): Defines a range within a character set. Ex: [a-z] matches any lowercase letter from 'a' to 'z'.
+- \w (word character): Matches any alphanumeric character or underscore.
+- \d (digit): Matches any single digit (0-9).
+- \s (whitespace): Matches any whitespace character (space, tab, newline, etc.).
+- \b (word boundary): Matches the boundary between a word and a non-word character.
+
+**Quantifiers:**
+- '*' (asterisk): Matches the preceding character zero or more times. Ex: ab*c matches "ac", "abc", "abbc", etc.
+- '+' (plus sign): Matches the preceding character one or more times. Ex: ab+c matches "abc", "abbc", "abbbc", etc., but not "ac".
+- '?' (question mark): Matches the preceding character zero or one time. Ex: colou?r matches both "color" and "colour".
+- {n}: Matches the preceding character exactly n times. Ex: ab{2}c matches "abbc".
+- {n,m}: Matches the preceding character at least n but no more than m times. Ex: a{2,3}b matches "aabb" or "aaab".
+
+**Grouping:**
+- () (parentheses): Groups characters to define a subexpression. Ex: (ab)+c matches "abcabcabc".
+  
+**Backreferences:**
+- '\n' (backslash followed by a number): Matches the nth captured group in the pattern. Ex: (\d{3})-(\d{3})-(\d{4}) captures three groups of digits in a phone number format.
+
+**Special Sequences:**
+- '\t': Matches a tab character.
+- '\n': Matches a newline character.
+- '\r': Matches a carriage return character.
+
+**Flags:**
+- i (case-insensitive): Makes the pattern case-insensitive.
+- g (global): Matches all occurrences of the pattern in the string.
+- m (multiline): Treats the string as multiple lines for anchors like ^ and $.
 
