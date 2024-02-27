@@ -7,6 +7,12 @@ class Recipes {
     getUserName() {
         return localStorage.getItem('userName') ?? 'UserName';
     }
+
+    showModal() {
+        const modalEl = document.querySelector('#myModal');
+        const modal = new bootstrap.Modal(modalEl);
+        modalEl.show()
+    }
 }
 
 const recipes = new Recipes();
