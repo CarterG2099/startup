@@ -8,7 +8,6 @@ body {
     max-width: 100%;
   }
   
-  
   header {
     flex: 0 80px;
   }
@@ -78,22 +77,12 @@ body {
 
 /* Add this media query at the end of your existing CSS */
 @media (max-width: 600px) {
-  table {
+  .meal-table {
     width: 100%;
     margin-bottom: 20px;
   }
 
-  .table th, .table td {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .table thead, .table tbody, .table th, .table td, .table tr {
-    display: block;
-  }
-
-  .table td:before {
+  .meal-table td:before {
     /* Now like a table header */
     position: absolute;
     /* Top/left values mimic padding */
@@ -104,20 +93,19 @@ body {
     white-space: nowrap;
   }
 
-  /* Label the data */
-  .table td:nth-of-type(1):before { content: 'Meal Title(Database Data)'; }
-  .table td:nth-of-type(2):before { content: 'Ingredients'; }
-  .table td:nth-of-type(3):before { content: 'Per Serving'; }
-  .table td:nth-of-type(4):before { content: 'Instructions'; }
-  .table td:nth-of-type(5):before { content: 'Reviews'; }
-  .table td:nth-of-type(6):before { content: 'Votes'; }
-  .table td:nth-of-type(7):before { content: 'UpVote'; }
-
-  /* Additional styling for images */
-  .table img {
+  .meal-table img {
     max-width: 100%;
     height: auto;
   }
+
+  .meal-title {
+    font-size: 1.5em;
+    font-weight: bold;}
+
+  #table-container {
+    display: flex;  
+    flex-direction: row;
+    flex-wrap: wrap;}
 }
 
 
