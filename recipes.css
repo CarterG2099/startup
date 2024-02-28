@@ -1,23 +1,28 @@
-  .user-name{
-    margin: 20px;
-  }
-  
-
-  #table-container {
+ #table-container {
     width: 100%;
     margin: 1em;
-    justify-content: top;
+    justify-content: space-between;
   }
 
-  .meal-table{
+  .meal-table {
     padding: 20px;
-    justify-content: top;
+    flex: 1;  
+  }
+
+  .meal-table td {
+    align-items: flex-start;  
   }
 
   .body-container{
     width: 100%;
     margin: 2em;
     justify-content: center;
+  }
+
+  .btn {
+    padding: 3px;
+    margin-left: 10px;
+
   }
 
   
