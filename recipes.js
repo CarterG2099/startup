@@ -27,6 +27,7 @@ class Recipes {
 
         // Title row
         const firstRow = document.createElement('tr');
+        firstRow.className = 'meal-row';
         const titleCell = document.createElement('td');
         titleCell.textContent = meal.mealTitle;
         titleCell.className = 'meal-title';
@@ -57,6 +58,7 @@ class Recipes {
 
         // Instructions row
         const secondRow = document.createElement('tr');
+        secondRow.className = 'link-row';
         const instructionsCell = document.createElement('td');
         const instructionsLink = document.createElement('a');
         instructionsLink.href = meal.instructionsLink;
@@ -89,11 +91,12 @@ class Recipes {
     generateTable(mealData, id) {
         const tableContainer = document.getElementById(id);
         const table = document.createElement('table');
+        table.className = 'table';
         const thead = document.createElement('thead');
         const tbody = document.createElement('tbody');
 
         const headerRow = document.createElement('tr');
-        ['Meal Title', 'Ingredients', 'Per Serving'].forEach((header) => {
+        ['Meal Title', 'Ingredients', 'Nutrition Info'].forEach((header) => {
           const th = document.createElement('th');
           th.textContent = header;
           headerRow.appendChild(th);
@@ -112,7 +115,7 @@ class Recipes {
 
     breakfastData = [
         {
-            mealTitle: 'Breakfast',
+            mealTitle: 'Waffles',
             ingredients: ['ingredient1', 'ingredient2', 'ingredient3'],
             perServing: {
                 calories: '300',
@@ -124,7 +127,7 @@ class Recipes {
             reviewsLink: 'reviews.html',
         },
         {
-            mealTitle: 'Breakfast',
+            mealTitle: 'Eggs',
             ingredients: ['ingredient1', 'ingredient2', 'ingredient3'],
             perServing: {
                 calories: '300',
@@ -139,7 +142,7 @@ class Recipes {
     ];
     lunchData = [
         {
-            mealTitle: 'Lunch',
+            mealTitle: 'Pasta',
             ingredients: ['ingredient1', 'ingredient2', 'ingredient3'],
             perServing: {
                 calories: '300',
@@ -156,7 +159,7 @@ class Recipes {
 
     dinnerData = [
         {
-            mealTitle: 'Dinner',
+            mealTitle: 'Fajitas',
             ingredients: ['ingredient1', 'ingredient2', 'ingredient3'],
             perServing: {
                 calories: '300',

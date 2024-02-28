@@ -39,62 +39,11 @@
       <!-- More formatting with old style HTML -->
       <br />
       <br />
-      <div class="top-right-container">
-        <!-- Button to trigger the modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Add Recipe</button>
-        <!-- <button type="button" class="btn btn-primary" onclick="recipes.showModal()">Add Recipe</button> -->
-
-
-        <!-- Modal template -->
-        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog">
-          <div class="modal-dialog" role="dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Submit Recipe</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="mb-3">
-                    <label for="mealTitle" class="form-label">Meal Title</label>
-                    <input type="text" class="form-control" id="mealTitle" placeholder="Enter Meal Title">
-                  </div>
-                  <div class="mb-3">
-                    <label for="ingredients" class="form-label">Ingredients</label>
-                    <textarea class="form-control" id="ingredients" rows="3" placeholder="Enter ingredients, each on a new line"></textarea>
-                  </div>
-                  <div class="mb-3">
-                    <label for="caloriesPerServing" class="form-label">Calories Per Serving</label>
-                    <input type="number" class="form-control" id="caloriesPerServing" placeholder="Enter calories per serving" step="0.1">
-                  </div>
-                  <div class="mb-3">
-                      <label for="proteinPerServing" class="form-label">Protein Per Serving</label>
-                      <input type="number" class="form-control" id="proteinPerServing" placeholder="Enter grams pf protein per serving" step="0.1">
-                  </div>
-                  <div class="mb-3">
-                      <label for="fatPerServing" class="form-label">Fat Per Serving</label>
-                      <input type="number" class="form-control" id="fatPerServing" placeholder="Enter grams of fat per serving" step="0.1">
-                  </div>
-                  <div class="mb-3">
-                      <label for="carbsPerServing" class="form-label">Carbohydrates Per Serving</label>
-                      <input type="number" class="form-control" id="carbsPerServing" placeholder="Enter grams of carbohydrates per serving" step="0.1">
-                  </div>
-                  <div class="mb-3">
-                    <label for="instructions" class="form-label">Instructions</label>
-                    <textarea class="form-control" id="instructions" rows="3" placeholder="Enter instructions, each on a new line"></textarea>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Submit</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- <div class="top-right-container"> -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newRecipeModal">Add Recipe</button>
+      <!-- </div> -->
       <br />
-      <div>
+      <div class="body-container">
         <table id="table-container">
           <thead>
             <tr>            
@@ -114,9 +63,51 @@
             <td id='dinner-table' class="meal-table"></div>
           </tr>
         </table>
-
       </div>
     </main>
+    <!-- Modal template -->
+    <div class="modal fade" id="newRecipeModal" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="mealTitle" class="form-label">Meal Title</label>
+                <input type="text" class="form-control" id="mealTitle" placeholder="Enter Meal Title">
+              </div>
+              <div class="mb-3">
+                <label for="ingredients" class="form-label">Ingredients</label>
+                <textarea class="form-control" id="ingredients" rows="3" placeholder="Enter ingredients, each on a new line"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="caloriesPerServing" class="form-label">Calories Per Serving</label>
+                <input type="number" class="form-control" id="caloriesPerServing" placeholder="Enter calories per serving" step="0.1">
+              </div>
+              <div class="mb-3">
+                  <label for="proteinPerServing" class="form-label">Protein Per Serving</label>
+                  <input type="number" class="form-control" id="proteinPerServing" placeholder="Enter grams pf protein per serving" step="0.1">
+              </div>
+              <div class="mb-3">
+                  <label for="fatPerServing" class="form-label">Fat Per Serving</label>
+                  <input type="number" class="form-control" id="fatPerServing" placeholder="Enter grams of fat per serving" step="0.1">
+              </div>
+              <div class="mb-3">
+                  <label for="carbsPerServing" class="form-label">Carbohydrates Per Serving</label>
+                  <input type="number" class="form-control" id="carbsPerServing" placeholder="Enter grams of carbohydrates per serving" step="0.1">
+              </div>
+              <div class="mb-3">
+                <label for="instructions" class="form-label">Instructions</label>
+                <textarea class="form-control" id="instructions" rows="3" placeholder="Enter instructions, each on a new line"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <footer class="bg-dark text-white-50">
       <div class="container-fluid">
