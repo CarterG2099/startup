@@ -50,9 +50,9 @@ Trying to eat healthier or struggling to keep all of your favorite recipes organ
 
 ## JavaScript Deliverable
 - **Login** - When you press the login button it takes you to the voting page.
-- **Database** - Display each meal dynamically from the database and when clicking on Add Recipe it adds a new meal to the database that I will eventually turn into websocket data. Also clicking on the instructions link pops up a modal with the instructions stored in the database
+- **Database** - Display each meal dynamically from the database and when clicking on Add Recipe it adds a new meal to the database that I will eventually turn into websocket data. Also clicking on the instructions link pops up a modal with the instructions stored in the database. Also the Reviews are dynamically loaded based on the selected meal from the database
 - **Websocket** - When clicking the upVote button the votes simulate the websocket update
-- **Injecting into DOM** - When the recipes load, the Recipes class injects all of the meal data by creating HTML and inserting the data
+- **Injecting into DOM** - When the recipes and reviews load, the Recipes/reviews classes injects all of the meal data by creating HTML and inserting the data
 - **Local Storage** - the username is stored in Local Storage and displayed across the pages.
 
 ## Service Deliverable
