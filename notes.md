@@ -1,6 +1,7 @@
 # Notes
 - I learned what markdown is and how to style this file
 - Commit essentially saves your changes, push then updates the changes to main file and pull updates file on separate computer
+- IANA: Governing body over the internet
 
 - **IP Address** http://50.19.114.36
 - **Technology Stack:** Software that a particular company uses to develop/maintain their product. There are acronyms for more common stacks but most stacks are dependent upon company needs
@@ -42,6 +43,22 @@
     - The certificate issuer is responsible for verifying that the certificate owner actually owns the domain name represented by the certificate.
     - Certificates have to be renewed - Caddy uses "Let's Encrypt" to safely and freely renew the certification with new encryption.
     - **ACME** is the protocol for communication between certificate authorities. (Built into Caddy and many other softwares)
+- **Verbs**: Describe what the HTTP Request is looking for
+    - GET/POST/PUT/DELTE/OPTIONS
+- **Status Codes**:
+      - 1xx: Informational
+      - 2xx: Success
+      - 3xx Redirect
+      - 4xx Client Errors
+      - 5xx Server Errors
+- **Headers**: Specify metadata - security, caching, data formats, cookies
+- **Body**: Defined by Content-Type - HTML text, image, JSON, JavaScript
+- **Cookies**: HTTP is stateless thus doesn't know anything about previous or future request without cookies
+
+## Ports
+- 0 to 1023: Standard Protocols
+- 1024 to 49151: Assigned to requesting entities
+- 49152 to 65535: Dynamic
  
 ## HTML
 - Stands for HyperTextMarkupLanguage
@@ -67,8 +84,6 @@
 ## Web Servers
 - **Microservices:** Web services that provide a single functional purpose
 - **We Service Gateway:** Looks at the request and maps it to the other services running on a different ports. Commonly on port 443
-
-
 
 ## Console Command List
 - echo - Output the parameters of the command
