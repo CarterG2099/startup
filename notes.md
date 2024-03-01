@@ -85,6 +85,17 @@
 - **Microservices:** Web services that provide a single functional purpose
 - **We Service Gateway:** Looks at the request and maps it to the other services running on a different ports. Commonly on port 443
 
+## Node.js
+- Allows Javascript to be run outside of the browser - can be a full stack
+- Uses V8 to read and execute in Chrome or Node
+- NVM: Node Version Manager - allows for executing JS directly in console
+- NPM: Node Package Manager - Allows access to JS packages (like libraries)
+      - Package.json contains 3 things:
+          1. Metadata about your project like name, default entry JS file
+          2. Commands to execute, run, test or distribute code
+          3. Packages the project depends on
+      - More packages available [NPM Website](https://www.npmjs.com/)
+
 ## Console Command List
 - echo - Output the parameters of the command
 - cd - Change directory
