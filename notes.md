@@ -95,6 +95,14 @@
           2. Commands to execute, run, test or distribute code
           3. Packages the project depends on
       - More packages available [NPM Website](https://www.npmjs.com/)
+## Express
+- **Middleware**: represents componentized pieces of functionality.
+    - For multiple middleware calls the next parameter  must be passed otherwise it stops.
+- **Mediator**: loads the middleware components and determines their order of execution. When a request comes to the mediator it then passes the request around to the middleware components.(Express is a mediator and comes with default middleware functions.)
+
+## SOP/CORS
+- **SOP**: Same Origin Policy - only allows JavaScript to make requests to a domain if it is the same domain that the user is currently viewing. A request from byu.iinstructure.com for service endpoints that are made to byu.instructure.com would fail because the domains do not match.
+- **CORS**: Cross Origin Resource Sharing - allows the client (e.g. browser) to specify the origin of a request and then let the server respond with what origins are allowed. The server may say that all origins are allowed.
 
 ## Console Command List
 - echo - Output the parameters of the command
