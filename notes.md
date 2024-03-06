@@ -102,7 +102,17 @@
 
 ## SOP/CORS
 - **SOP**: Same Origin Policy - only allows JavaScript to make requests to a domain if it is the same domain that the user is currently viewing. A request from byu.iinstructure.com for service endpoints that are made to byu.instructure.com would fail because the domains do not match.
-- **CORS**: Cross Origin Resource Sharing - allows the client (e.g. browser) to specify the origin of a request and then let the server respond with what origins are allowed. The server may say that all origins are allowed.
+- **CORS**: Cross Origin Resource Sharing - allows the client (e.g. browser) to specify the origin of a request and then let the server respond with what origins are allowed. The server may say that all origins are allowe
+
+## Service Design
+- Should model users mind not programming infrastructure
+- Exposing Endpoints
+    - RPC (Remote Procedure Calls): exposes service endpoints as simple function calls, usually just leverages the POST
+    - REST (Representational State Transfer): Uses resources
+    - GraphQL: Focuses on manipulation of data, basically one endpoint with filters - allows user a lot of access
+ 
+## PM2 - Process Manager
+- **Daemon**: keep programs running after a shutdown. Term daemon comes from the idea of something that is always there working in the background.
 
 ## Console Command List
 - echo - Output the parameters of the command
