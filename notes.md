@@ -9,6 +9,7 @@
 ## Quick Copy
 - ./deployFiles.sh -k ~/.ssh/keypair260.pem -h pronutrilog.click -s startup
 - ssh -i keypair260.pem ubuntu@pronutrilog.click
+- ./deployService.sh -k ~/.ssh/keypair260.pem -h pronutrilog.click -s startup
 
 ## AWS EC2
 - Instance: Virtual Server that uses hardware in N Virginia
