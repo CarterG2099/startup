@@ -1,6 +1,7 @@
 # Notes
 - I learned what markdown is and how to style this file
 - Commit essentially saves your changes, push then updates the changes to main file and pull updates file on separate computer
+- IANA: Governing body over the internet
 
 - **IP Address** http://50.19.114.36
 - **Technology Stack:** Software that a particular company uses to develop/maintain their product. There are acronyms for more common stacks but most stacks are dependent upon company needs
@@ -8,6 +9,7 @@
 ## Quick Copy
 - ./deployFiles.sh -k ~/.ssh/keypair260.pem -h pronutrilog.click -s startup
 - ssh -i keypair260.pem ubuntu@pronutrilog.click
+- ./deployService.sh -k ~/.ssh/keypair260.pem -h pronutrilog.click -s startup
 
 ## AWS EC2
 - Instance: Virtual Server that uses hardware in N Virginia
@@ -42,6 +44,22 @@
     - The certificate issuer is responsible for verifying that the certificate owner actually owns the domain name represented by the certificate.
     - Certificates have to be renewed - Caddy uses "Let's Encrypt" to safely and freely renew the certification with new encryption.
     - **ACME** is the protocol for communication between certificate authorities. (Built into Caddy and many other softwares)
+- **Verbs**: Describe what the HTTP Request is looking for
+    - GET/POST/PUT/DELTE/OPTIONS
+- **Status Codes**:
+      - 1xx: Informational
+      - 2xx: Success
+      - 3xx Redirect
+      - 4xx Client Errors
+      - 5xx Server Errors
+- **Headers**: Specify metadata - security, caching, data formats, cookies
+- **Body**: Defined by Content-Type - HTML text, image, JSON, JavaScript
+- **Cookies**: HTTP is stateless thus doesn't know anything about previous or future request without cookies
+
+## Ports
+- 0 to 1023: Standard Protocols
+- 1024 to 49151: Assigned to requesting entities
+- 49152 to 65535: Dynamic
  
 ## HTML
 - Stands for HyperTextMarkupLanguage
@@ -68,7 +86,34 @@
 - **Microservices:** Web services that provide a single functional purpose
 - **We Service Gateway:** Looks at the request and maps it to the other services running on a different ports. Commonly on port 443
 
+## Node.js
+- Allows Javascript to be run outside of the browser - can be a full stack
+- Uses V8 to read and execute in Chrome or Node
+- NVM: Node Version Manager - allows for executing JS directly in console
+- NPM: Node Package Manager - Allows access to JS packages (like libraries)
+      - Package.json contains 3 things:
+          1. Metadata about your project like name, default entry JS file
+          2. Commands to execute, run, test or distribute code
+          3. Packages the project depends on
+      - More packages available [NPM Website](https://www.npmjs.com/)
+## Express
+- **Middleware**: represents componentized pieces of functionality.
+    - For multiple middleware calls the next parameter  must be passed otherwise it stops.
+- **Mediator**: loads the middleware components and determines their order of execution. When a request comes to the mediator it then passes the request around to the middleware components.(Express is a mediator and comes with default middleware functions.)
 
+## SOP/CORS
+- **SOP**: Same Origin Policy - only allows JavaScript to make requests to a domain if it is the same domain that the user is currently viewing. A request from byu.iinstructure.com for service endpoints that are made to byu.instructure.com would fail because the domains do not match.
+- **CORS**: Cross Origin Resource Sharing - allows the client (e.g. browser) to specify the origin of a request and then let the server respond with what origins are allowed. The server may say that all origins are allowe
+
+## Service Design
+- Should model users mind not programming infrastructure
+- Exposing Endpoints
+    - RPC (Remote Procedure Calls): exposes service endpoints as simple function calls, usually just leverages the POST
+    - REST (Representational State Transfer): Uses resources
+    - GraphQL: Focuses on manipulation of data, basically one endpoint with filters - allows user a lot of access
+ 
+## PM2 - Process Manager
+- **Daemon**: keep programs running after a shutdown. Term daemon comes from the idea of something that is always there working in the background.
 
 ## Console Command List
 - echo - Output the parameters of the command
