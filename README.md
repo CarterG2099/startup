@@ -58,7 +58,7 @@ Trying to eat healthier or struggling to keep all of your favorite recipes organ
 ## Service Deliverable
 - **Node.js/Express** - done
 - **Static middleware for frontend** - done
-- **Calls to third party endpoints** - quote on the reviews page
+- **Calls to third party endpoints** - quote on the reviews page and random images for breakfast/lunch/dinner
 - **Backend Service Endpoints** - Endpoints for recipes, placeholders for login that stores the current user on the server
 - **Frontend calls service endpoints** - I did this using the fetch function
 
