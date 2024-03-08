@@ -50,10 +50,16 @@
               <th>Lunch</th>
               <th>Dinner</th>
             </tr>
-            <tr>
-              <td><img src="images/breakfast.jpg" class="img-thumbnail"></td>
+            <tr id="images">
+              <td id="breakfast-image" class="img-thumbnail"></td>
+              <td id="lunch-image" class="img-thumbnail"></td>
+              <td id="dinner-image" class="img-thumbnail"></td>
+              <!-- <td><div id="picture" class="img-thumbnail"></div></td>
+              <td><div id="picture" class="img-thumbnail"></div></td>
+              <td><div id="picture" class="img-thumbnail"></div></td> -->
+              <!-- <td><img src="images/breakfast.jpg" class="img-thumbnail" id="picture"></td>
               <td><img src="images/lunch.jpg" class="img-thumbnail"></td>
-              <td><img src="images/dinner.jpg" class="img-thumbnail"></td>
+              <td><img src="images/dinner.jpg" class="img-thumbnail"></td> -->
             </tr>
           </thead>
           <tbody>
@@ -129,7 +135,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="recipes.submitRecipe()" data-bs-dismiss="modal">Submit</button>
+                <button type="button" class="btn btn-primary" onclick="recipesClass.submitRecipe()" data-bs-dismiss="modal">Submit</button>
               </div>
             </form>
           </div>
@@ -143,6 +149,19 @@
         <a class="text-reset" href="https://github.com/CarterG2099/startup.git">GitHub</a>
       </div>
     </footer>
+    <script>
+      // Ensure the document is fully loaded before executing the script
+      document.addEventListener('DOMContentLoaded', async function () {
+        // Load recipes and instantiate the Recipes class
+        const recipesClass = new Recipes();  // Pass appropriate initial data
+    
+        // Attach the instance to the global scope for access in other scripts
+        window.recipesClass = recipesClass;
+    
+        // Optional: If you want to update the recipes in the UI, you can call loadRecipes again
+        // await loadRecipes();
+      });
+    </script>
     <script src="reviews.js"></script>
     <script src="recipes.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

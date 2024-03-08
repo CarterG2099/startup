@@ -28,13 +28,9 @@
 
         generateReviewCards() {
             const reviewList = JSON.parse(localStorage.getItem('reviewList'));
-            console.log(reviewList);
-            console.log(reviewList.length);
             const cardGroup = document.getElementById('card-group');
-            console.log(cardGroup);
             const reviewListLength = reviewList?.length ?? 0;
-        
-            if(reviewListLength === 0) {
+            if(reviewListLength === 0 || reviewList === null) {
                 console.log(cardGroup)
                 const noReview = document.createElement('div');
                 noReview.textContent = 'No reviews yet';
@@ -91,5 +87,32 @@
     document.addEventListener('DOMContentLoaded', function () {
         const reviewPage = new ReviewPage();
     });
-    
 
+      
+function displayQuote(data) {
+fetch('https://api.quotable.io/random')
+    .then((response) => response.json())
+    .then((data) => {
+    const containerEl = document.querySelector('#quote');
+
+    const quoteEl = document.createElement('p');
+    quoteEl.classList.add('quote');
+    const authorEl = document.createElement('p');
+    authorEl.classList.add('author');
+
+    quoteEl.textContent = data.content;
+    authorEl.textContent = data.author;
+
+    containerEl.appendChild(quoteEl);
+    containerEl.appendChild(authorEl);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if the #quote element exists on the current page
+    const quoteContainer = document.querySelector('#quote');
+    if (quoteContainer) {
+        // Call the function only if the element is present
+        displayQuote();
+    }
+});

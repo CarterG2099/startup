@@ -1,79 +1,14 @@
 class Recipes {
-    tempReviewList1 = [
-        {
-          mealTitle: 'Test1',
-          userName: 'John',
-          review: 'This is a great recipe',
-          rating: 4,
-          votes: 6,
-          url: 'reviews.html',
-        },
-        {
-          mealTitle: 'Test1',
-          userName: 'Jane',
-          review: 'This is a great recipe',
-          rating: 5,
-          votes: 10,
-          url: 'reviews.html',
-        },
-        {
-          mealTitle: 'Test1',
-          userName: 'Jill',
-          review: 'This is a great recipe',
-          rating: 5,
-          votes: 10,
-          url: 'reviews.html',
-        },
-        {
-          mealTitle: 'Test1',
-          userName: 'Jack',
-          review: 'This is a great recipe',
-          rating: 5,
-          votes: 10,
-          url: 'reviews.html',
-        },
-      ];
-      
-       tempReviewList2 = [
-        {
-          mealTitle: 'Test2',
-          userName: 'Sam',
-          review: 'This is a great recipe',
-          rating: 5,
-          votes: 10,
-          url: 'reviews.html',
-        },
-        {
-          mealTitle: 'Test2',
-          userName: 'Tony',
-          review: 'This is a great recipe',
-          rating: 5,
-          votes: 10,
-          url: 'reviews.html',
-        },
-        {
-          mealTitle: 'Test2',
-          userName: 'Abby',
-          review: 'This is a great recipe',
-          rating: 5,
-          votes: 10,
-          url: 'reviews.html',
-        },
-        {
-          mealTitle: 'Test2',
-          userName: 'Tina',
-          review: 'This is a great recipe',
-          rating: 5,
-          votes: 10,
-          url: 'reviews.html',
-        },
-      ];
     constructor() {
         const userNameEl = document.querySelector('.user-name');
         userNameEl.textContent = this.getUserName() + ' ' + userNameEl.textContent;
-        this.generateTable(this.breakfastData, 'breakfast-table');
-        this.generateTable(this.lunchData, 'lunch-table');
-        this.generateTable(this.dinnerData, 'dinner-table');
+        this.recipes = [];
+    }
+
+    init(breakfastData, lunchData, dinnerData) {
+        this.generateTable(breakfastData, 'breakfast-table');
+        this.generateTable(lunchData, 'lunch-table');
+        this.generateTable(dinnerData, 'dinner-table');
     }
 
     getUserName() {
@@ -97,7 +32,6 @@ class Recipes {
 
     submitRecipe() {
         const mealType = document.getElementById('mealType').value;
-        console.log(mealType);
         const mealTitle = document.getElementById('mealTitle').value;
         const ingredients = document.getElementById('ingredients').value;
         const perServing = {
@@ -111,22 +45,17 @@ class Recipes {
         const votes = 0;
 
         const newRecipe = {
+            mealType,
             mealTitle,
-            ingredients: ingredients.split(','),
+            ingredients,
             perServing,
             instructions,
             reviewsLink,
             votes
         };
-        if(mealType === 'breakfast') {
-            this.breakfastData.push(newRecipe);
-        }
-        if(mealType === 'lunch') {
-            this.lunchData.push(newRecipe);
-        }
-        if(mealType === 'dinner') {
-            this.dinnerData.push(newRecipe);
-        }
+        
+        this.saveRecipe(newRecipe);
+
     }
 
     upVote(meal) {
@@ -216,6 +145,7 @@ class Recipes {
         th.textContent = header;
         headerRow.appendChild(th);
         });
+
         thead.appendChild(headerRow);
 
         mealData.forEach((meal) => {
@@ -228,77 +158,91 @@ class Recipes {
         tableContainer.appendChild(table);
     }
 
-    breakfastData = [
-        {
-            mealTitle: 'Waffles',
-            ingredients: ['ingredient1', 'ingredient2', 'ingredient3'],
-            perServing: {
-                calories: '300',
-                protein: '20g',
-                fat: '10g',
-                carbs: '40g',
-            },
-            instructions: 'Sample instructions',
-            reviewsLink: 'reviews.html',
-            votes: 7,
-            reviews: this.tempReviewList2
-        },
-        {
-            mealTitle: 'Eggs',
-            ingredients: ['ingredient1', 'ingredient2', 'ingredient3'],
-            perServing: {
-                calories: '300',
-                protein: '20g',
-                fat: '10g',
-                carbs: '40g',
-            },
-            instructions: 'Sample instructions',
-            reviewsLink: 'reviews.html',
-            votes: 3,
-            reviews: this.tempReviewList1
-        },
-        // Add more data as needed
-    ];
-    lunchData = [
-        {
-            mealTitle: 'Pasta',
-            ingredients: ['ingredient1', 'ingredient2', 'ingredient3'],
-            perServing: {
-                calories: '300',
-                protein: '20g',
-                fat: '10g',
-                carbs: '40g',
-            },
-            instructions: 'Sample instructions',
-            reviewsLink: 'reviews.html',
-            votes: 2,
-            reviews: this.tempReviewList1
-        },
-        // Add more data as needed
-    ];
+    async saveRecipe(recipeToSave) {
+        try {
+            const response = await fetch('/api/recipe', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(recipeToSave),
+            });
+            this.recipes = await response.json();
+        } catch (error) {
+            console.error(`Error saving recipes: ${error.message}`);
+        }
+    
+    }
+    
+}
 
+function parseRecipes(apiRecipes) {
+    let breakfastData = [];
+    let lunchData = [];
+    let dinnerData = [];
 
-    dinnerData = [
-        {
-            mealTitle: 'Fajitas',
-            ingredients: ['ingredient1', 'ingredient2', 'ingredient3'],
-            perServing: {
-                calories: '300',
-                protein: '20g',
-                fat: '10g',
-                carbs: '40g',
-            },
-            instructions: 'Sample instructions',
-            reviewsLink: 'reviews.html',
-            votes: 0,
-            reviews: this.tempReviewList2
-        },
-        // Add more data as needed
-    ];
+    for (const apiRecipe of apiRecipes) {
+        console.log(apiRecipe);
+        apiRecipe.ingredients = typeof apiRecipe.ingredients == 'string' ? apiRecipe.ingredients.split('\n') : []
+        apiRecipe.instructions = typeof apiRecipe.instructions === 'string' ? apiRecipe.instructions.split('\n') : []
 
+        // Assign the new recipe to the appropriate category
+        if (apiRecipe.mealType === 'breakfast') {
+            breakfastData.push(apiRecipe);
+        } else if (apiRecipe.mealType === 'lunch') {
+            lunchData.push(apiRecipe);
+        } else if (apiRecipe.mealType === 'dinner') {
+            dinnerData.push(apiRecipe);
+        }
+    }
 
-      
+    recipesClass.init(breakfastData, lunchData, dinnerData);
+}
+
+async function loadRecipes() {
+    let apiRecipes = [];
+    try {
+        const response = await fetch('/api/recipes');
+        apiRecipes = await response.json();
+
+        // Save recipes in local storage as backup
+        localStorage.setItem('apiRecipes', JSON.stringify(apiRecipes));
+    } catch (error) {
+        console.error(`Error loading recipes: ${error.message}`);
+        const storedRecipes = localStorage.getItem('apiRecipes');
+        if (storedRecipes) {
+            apiRecipes = JSON.parse(storedRecipes);
+        }
+    }
+
+    parseRecipes(apiRecipes);
+}
+
+function displayPicture(mealType) {
+    fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
+        .then((response) => response.json())
+        .then((data) => {            
+            // Check if data.meals is not empty
+            console.log("TEST@")
+            const meal = data.meals[0];
+            console.log(meal)
+            const imgUrl = meal.strMealThumb; // Use the correct property for the image URL
+            const tdEl = document.getElementById(`${mealType}-image`);
+            const imgEl = document.createElement("img")
+            tdEl.appendChild(imgEl)
+            console.log("IMGEL"+imgEl)
+            imgEl.style.maxWidth = '300px';
+            imgEl.style.maxHeight = '200px';
+            imgEl.setAttribute('src', imgUrl);
+            console.log("TEST" + imgUrl)
+        })
+        .catch((error) => {
+            console.error('Error fetching meal data:', error);
+        });
 }
 
 
-const recipes = new Recipes();
+
+// recipesClass = new Recipes();
+loadRecipes();
+['breakfast', 'lunch', 'dinner'].forEach((mealType) => {
+    displayPicture(mealType);
+});
