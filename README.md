@@ -63,6 +63,12 @@ Trying to eat healthier or struggling to keep all of your favorite recipes organ
 - **Frontend calls service endpoints** - I did this using the fetch function
 
 ## DB/Login Deliverable
+- **MongoDB Atla database created** - done
+- **Stores data in MongoDB** - done
+- **User Registration** - Creates a new account in the database
+- **Existing User** - Allows for existing user to login
+- **Use MongoDB to store credentials** Stores both user and recipes
+- **Restricts Functionality** - You cannot add a recipe until logged in
 
 ## WebSocket Deliverable
 
