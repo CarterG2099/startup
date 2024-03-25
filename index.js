@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 const express = require('express');
 const app = express();
 const DB = require('./database.js');
+const { peerProxy } = require('./peerProxy.js');
+
 
 const authCookieName = 'token';
 
@@ -118,17 +120,21 @@ function setAuthCookie(res, authToken) {
   });
 }
 
-app.listen(port, () => {
+// app.listen(port, () => {
+//   console.log(`Listening on port ${port}`);
+// });
+
+// let recipes = [];
+
+// async function loadRecipes(){
+//   const response = await fetch('/api/recipes');
+// }
+
+// function updateRecipes(recipe, recipes){
+//   recipes.push(recipe);
+//   return recipes;
+// }
+const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-
-let recipes = [];
-
-async function loadRecipes(){
-  const response = await fetch('/api/recipes');
-}
-
-function updateRecipes(recipe, recipes){
-  recipes.push(recipe);
-  return recipes;
-}
+peerProxy(httpService);
