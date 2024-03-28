@@ -101,6 +101,14 @@ apiRouter.post('/recipe', async (req, res) => {
   res.send(recipes);
 });
 
+// UpdateVoteCount
+secureApiRouter.put('/recipe', async (req, res) => {
+  const recipeId = req.body.mealTitle;
+  const votes = req.body.votes;
+  await DB.updateVoteCount(recipeId, votes);
+  res.status(204).end();
+});
+
 // Default error handler
 app.use(function (err, req, res, next) {
   res.status(500).send({ type: err.name, message: err.message });
@@ -137,4 +145,5 @@ function setAuthCookie(res, authToken) {
 const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
 peerProxy(httpService);

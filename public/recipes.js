@@ -1,8 +1,16 @@
+const UpVote = 'upVote';
+
 class Recipes {
+    socket;
+    recipes;
+    userNameEl;
+
     constructor() {
         const userNameEl = document.querySelector('.user-name');
         userNameEl.textContent = this.getUserName() + ' ' + userNameEl.textContent;
         this.recipes = [];
+
+        this.configureWebSocket();
     }
 
     init(breakfastData, lunchData, dinnerData) {
@@ -56,10 +64,6 @@ class Recipes {
         
         this.saveRecipe(newRecipe);
 
-    }
-
-    upVote(meal) {
-        meal.votes += 1;
     }
 
     createRow(meal) {
@@ -120,11 +124,12 @@ class Recipes {
 
         // Votes row
         const votesCell = document.createElement('td');
+        votesCell.setAttribute('id',`${meal.mealTitle}-votes`)
         votesCell.textContent = `Votes: ${meal.votes}`; // Fix: Use template literals to interpolate meal.votes
         const upvoteButton = document.createElement('button');
         upvoteButton.className = 'btn btn-primary';
         upvoteButton.textContent = 'UpVote';
-        upvoteButton.addEventListener('click', () => this.upVote(meal));
+        upvoteButton.addEventListener('click', () => upVote(meal));
         votesCell.appendChild(upvoteButton);
         secondRow.appendChild(votesCell);
         rows.push(secondRow);
@@ -169,9 +174,62 @@ class Recipes {
         } catch (error) {
             console.error(`Error saving recipes: ${error.message}`);
         }
-    
     }
+
+    // Functionality for peer communication using WebSocket
+    configureWebSocket() {
+        const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+        this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+        this.socket.onmessage = async (event) => {
+            console.log("OnMessage entered")
+            const msg = JSON.parse(await event.data.text());
+            this.displayMsg(msg.value)
+
+            // if(msg.type === UpVote) {
+            //     this.displayMsg(msg)
+            // }
+        };
+    }
+
+    displayMsg(msg) {
+        const voteCountElementId = `${msg.mealTitle}-votes`;
+        const voteCountElement = document.getElementById(voteCountElementId);
+        voteCountElement.innerHTML = `
+            Votes: ${msg.votes} 
+            <button class="btn btn-primary">UpVote</button>`;
+        voteCountElement.addEventListener('click', () => upVote(msg));
+        }
+
+    broadcastEvent(from, type, value) {
+        const event = {
+        from: from,
+        type: type,
+        value: value,
+        };
+
+        this.socket.send(JSON.stringify(event));
+    }
+}
+
+async function upVote(meal) {
+    meal.votes += 1;
+    try {
+        const response = await fetch('/api/recipe', {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(meal),
+        });        
+        // apiRecipes = await response.json();
+
+    } catch (error) {
+        console.error(`Error loading recipes: ${error.message}`);
+        const storedRecipes = localStorage.getItem('apiRecipes');
+        if (storedRecipes) {
+            apiRecipes = JSON.parse(storedRecipes);
+        }
+    }    
     
+    recipesClass.broadcastEvent('user', UpVote, meal);
 }
 
 function parseRecipes(apiRecipes) {
@@ -238,8 +296,6 @@ function displayPicture(mealType) {
             console.error('Error fetching meal data:', error);
         });
 }
-
-
 
 // recipesClass = new Recipes();
 loadRecipes();
