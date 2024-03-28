@@ -71,6 +71,10 @@ Trying to eat healthier or struggling to keep all of your favorite recipes organ
 - **Restricts Functionality** - You cannot add a recipe until logged in
 
 ## WebSocket Deliverable
+- **Backend listens for WebSocket connection** - done!
+- **Frontend makes WebSocket connection** - done!
+- **Data sent over WebSocket connection** - done!
+- **WebSocket data displayed** - All user votes display in realtime.
 
 ## React Deliverable
 
