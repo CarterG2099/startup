@@ -147,6 +147,17 @@
     - Least required access policy - Do not give any one user all the credentials necessary to control the entire system. Only give a user what access they need to do the work they are required to do.
     - Safeguard credentials - Do not store credentials in accessible locations such as a public GitHub repository or a sticky note taped to a monitor. Automatically rotate credentials in order to limit the impact of an exposure. Only award credentials that are necessary to do a specific task.
     - Public review - Do not rely on obscurity to keep your system safe. Assume instead that an attacker knows everything about your system and then make it difficult for anyone to exploit the system. If you can attack your system, then a hacker will be able to also. By soliciting public review and the work of external penetration testers, you will be able to discover and remove potential exploits.
+ 
+## Toolchains
+- Code repository - Stores code in a shared, versioned, location.
+- Linter - Removes, or warns, of non-idiomatic code usage.
+- Prettier - Formats code according to a shared standard.
+- Transpiler - Compiles code into a different format. For example, from JSX to JavaScript, TypeScript to JavaScript, or SCSS to CSS.
+- Polyfill - Generates backward compatible code for supporting old browser versions that do not support the latest standards.
+- Bundler - Packages code into bundles for delivery to the browser. This enables compatibility (for example with ES6 module support), or performance (with lazy loading).
+- Minifier - Removes whitespace and renames variables in order to make code smaller and more efficient to deploy.
+- Testing - Automated tests at multiple levels to ensure correctness.
+- Deployment - Automated packaging and delivery of code from the development environment to the production environment.
 
 ## Console Command List
 - echo - Output the parameters of the command
