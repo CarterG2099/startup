@@ -14,7 +14,7 @@ export function Recipes() {
     })
     .then((recipes) => {
       console.log("Recipes: ". recipes)
-      setRecipes(recipes);
+      setRecipes("RECIPES: ", recipes);
       localStorage.setItem('recipes', JSON.stringify(recipes))
     })
     .catch(() => {
