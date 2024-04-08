@@ -3,10 +3,15 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Recipes } from './recipes/recipes';
 import { Reviews } from './reviews/reviews';
+import { AuthState } from './login/authState';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
 export default function App() {
+  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '')
+  const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated
+  const [authState, setAuthState] = React.useState(currentAuthState)
+  
   return (
     <BrowserRouter>
       <div className='body bg-dark text-light'>
@@ -30,7 +35,20 @@ export default function App() {
         </header>
 
         <Routes>
-          <Route path='/' element={<Login />} exact />
+          <Route 
+            path='/' 
+            element={
+              <Login 
+                userName={userName}
+                authState={authState}
+                onAuthChange={(userName, authState) => {
+                  setAuthState(authState);
+                  setUserName(userName);
+                }}
+              />
+            } 
+            exact 
+          />
           <Route path='/recipes' element={<Recipes />} />
           <Route path='/reviews' element={<Reviews />} />
           <Route path='*' element={<NotFound />} />
