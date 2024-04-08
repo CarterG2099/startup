@@ -18,7 +18,7 @@ export function Recipes() {
       localStorage.setItem('recipes', JSON.stringify(recipes))
     })
     .catch((error) => {
-      // console.error(`Error loading recipes: ${error.message}`);
+      console.error(`Error loading recipes: ${error.message}`);
       const recipesText = localStorage.getItem('recipes');
       if (recipesText) {
         const parsedRecipes = JSON.parse(recipesText)
@@ -32,30 +32,56 @@ export function Recipes() {
   const breakfastRows = [];
   const lunchRows = [];
   const dinnerRows = [];
-  if (recipes.length) {
-    for (const [i, recipe] of recipes.entries()) {
-      console.log("i:", i, " recipe: ", recipe)
-      if(recipe.mealType == 'breakfast') {
-        breakfastRows.push(
-          <tr key={recipe.id}>
-            <td>{i}</td>
-            <td>{recipe.mealTitle}</td>
-            <td>{recipe.ingredients}</td>
-          </tr>
-        );
+
+    // Iterate over recipes to create table rows for each meal type
+    recipes.forEach((recipe, i) => {
+      const row = (
+        <tr key={recipe._id.$oid}>
+          <td>{recipe.mealTitle}</td>
+          <td>{recipe.ingredients}</td>
+          <td>{recipe.perServing.calories}</td>
+          <td>{recipe.perServing.protein}</td>
+          <td>{recipe.perServing.fat}</td>
+          <td>{recipe.perServing.carbs}</td>
+          <td>{recipe.instructions}</td>
+          <td>{recipe.reviewsLink}</td>
+          <td>{recipe.votes.$numberInt}</td>
+        </tr>
+      );
+  
+      // Push the row to the corresponding meal type array
+      if (recipe.mealType === 'breakfast') {
+        breakfastRows.push(row);
+      } else if (recipe.mealType === 'lunch') {
+        lunchRows.push(row);
+      } else if (recipe.mealType === 'dinner') {
+        dinnerRows.push(row);
       }
-    }
-  } else {
-    breakfastRows.push (
-      <table key="empty-table">
-        <tbody>
-          <tr key='0'>
-            <td> Be the first to add a recipe</td>
-          </tr>
-        </tbody>
-      </table>
-    );
-  }
+    });
+  // if (recipes.length) {
+  //   for (const [i, recipe] of recipes.entries()) {
+  //     console.log("i:", i, " recipe: ", recipe)
+  //     if(recipe.mealType == 'breakfast') {
+  //       breakfastRows.push(
+  //         <tr key={recipe.id}>
+  //           <td>{i}</td>
+  //           <td>{recipe.mealTitle}</td>
+  //           <td>{recipe.ingredients}</td>
+  //         </tr>
+  //       );
+  //     }
+  //   }
+  // } else {
+  //   breakfastRows.push (
+  //     <table key="empty-table">
+  //       <tbody>
+  //         <tr key='0'>
+  //           <td> Be the first to add a recipe</td>
+  //         </tr>
+  //       </tbody>
+  //     </table>
+  //   );
+  // }
 
   return (
     <main className="container-fluid bg-light text-center text-dark">
