@@ -11,7 +11,7 @@ export function Recipes() {
 
   const toggleInstructionsModal = (instructions) => {
     setInstructionText(instructions);
-    setShowInstructions(!showInstructions);
+    setShowInstructions(true); // Always set to true when instructions link is clicked
   };
 
   React.useEffect(() => {
@@ -37,8 +37,6 @@ export function Recipes() {
       }
     });
   },  []);
-
-  showInstructionsModal
 
   const breakfastRows = [];
   const lunchRows = [];
