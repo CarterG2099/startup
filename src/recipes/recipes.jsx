@@ -35,53 +35,52 @@ export function Recipes() {
 
     // Iterate over recipes to create table rows for each meal type
     recipes.forEach((recipe, i) => {
-      const row = (
-        <tr key={recipe._id.$oid}>
-          <td>{recipe.mealTitle}</td>
-          <td>{recipe.ingredients}</td>
-          <td>{recipe.perServing.calories}</td>
-          <td>{recipe.perServing.protein}</td>
-          <td>{recipe.perServing.fat}</td>
-          <td>{recipe.perServing.carbs}</td>
-          <td>{recipe.instructions}</td>
-          <td>{recipe.reviewsLink}</td>
-          <td>{recipe.votes.$numberInt}</td>
-        </tr>
+      const recipeTable = (
+        <>
+        <table>
+          <thead>
+            <tr>
+              <th>Meal Title</th>
+              <th>Ingredients</th>
+              <th>Nutrition Info</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="meal-row">
+              <td className='meal-title'>{recipe.mealTitle}</td>
+              <td>
+                <ul>
+                  {recipe.ingredients}
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>{recipe.perServing.calories}</li>
+                  <li>{recipe.perServing.protein}</li>
+                  <li>{recipe.perServing.fat}</li>
+                  <li>{recipe.perServing.carbs}</li>
+                </ul>
+              </td>
+            </tr>
+            <tr className='link-row'>
+              <td>{recipe.instructions}</td>
+              <td>{recipe.reviewsLink}</td>
+              <td>{recipe.votes}</td>
+            </tr>
+          </tbody>
+        </table>
+        </>
       );
   
       // Push the row to the corresponding meal type array
       if (recipe.mealType === 'breakfast') {
-        breakfastRows.push(row);
+        breakfastRows.push(recipeTable);
       } else if (recipe.mealType === 'lunch') {
-        lunchRows.push(row);
+        lunchRows.push(recipeTable);
       } else if (recipe.mealType === 'dinner') {
-        dinnerRows.push(row);
+        dinnerRows.push(recipeTable);
       }
     });
-  // if (recipes.length) {
-  //   for (const [i, recipe] of recipes.entries()) {
-  //     console.log("i:", i, " recipe: ", recipe)
-  //     if(recipe.mealType == 'breakfast') {
-  //       breakfastRows.push(
-  //         <tr key={recipe.id}>
-  //           <td>{i}</td>
-  //           <td>{recipe.mealTitle}</td>
-  //           <td>{recipe.ingredients}</td>
-  //         </tr>
-  //       );
-  //     }
-  //   }
-  // } else {
-  //   breakfastRows.push (
-  //     <table key="empty-table">
-  //       <tbody>
-  //         <tr key='0'>
-  //           <td> Be the first to add a recipe</td>
-  //         </tr>
-  //       </tbody>
-  //     </table>
-  //   );
-  // }
 
   return (
     <main className="container-fluid bg-light text-center text-dark">
