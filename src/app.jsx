@@ -5,6 +5,8 @@ import { Recipes } from './recipes/recipes';
 import { Reviews } from './reviews/reviews';
 import { AuthState } from './login/authState';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap/js/dist/modal';
 import './app.css';
 
 function App() {
