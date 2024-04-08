@@ -13,15 +13,18 @@ export function Recipes() {
       return response.json()
     })
     .then((recipes) => {
-      console.log("Recipes: ". recipes)
-      setRecipes("RECIPES: ", recipes);
+      console.log("Recipes: ", recipes)
+      setRecipes(recipes);
       localStorage.setItem('recipes', JSON.stringify(recipes))
     })
-    .catch(() => {
-      console.error(`Error loading recipes: ${error.message}`);
+    .catch((error) => {
+      // console.error(`Error loading recipes: ${error.message}`);
       const recipesText = localStorage.getItem('recipes');
       if (recipesText) {
-        setRecipes(JSON.parse(recipesText));
+        const parsedRecipes = JSON.parse(recipesText)
+        if (parsedRecipes) { // Check if parsedRecipes is not null or undefined
+          setRecipes(parsedRecipes);
+        }
       }
     });
   },  []);
@@ -34,7 +37,7 @@ export function Recipes() {
       console.log("i:", i, " recipe: ", recipe)
       if(recipe.mealType == 'breakfast') {
         breakfastRows.push(
-          <tr key={i}>
+          <tr key={recipe.id}>
             <td>{i}</td>
             <td>{recipe.mealTitle}</td>
             <td>{recipe.ingredients}</td>
@@ -44,10 +47,12 @@ export function Recipes() {
     }
   } else {
     breakfastRows.push (
-      <table>
-        <tr key='0'>
-          <td> Be the first to add a recipe</td>
-        </tr>
+      <table key="empty-table">
+        <tbody>
+          <tr key='0'>
+            <td> Be the first to add a recipe</td>
+          </tr>
+        </tbody>
       </table>
     );
   }
