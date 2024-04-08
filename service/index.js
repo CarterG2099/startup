@@ -89,7 +89,6 @@ secureApiRouter.use(async (req, res, next) => {
 
 // GetRecipes
 secureApiRouter.get('/recipes', async (req, res) => {
-  console.log("Entered Recipes API")
   const recipes = await DB.getRecipes();
   res.send(recipes);
 });

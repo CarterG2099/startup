@@ -1,9 +1,18 @@
 import React from 'react';
 
+import { InstructionModal } from './instructions';
+import { useState } from 'react';
 import './recipes.css';
 
 export function Recipes() {
   const [recipes, setRecipes] = React.useState([]);
+  const [showInstructions, setShowInstructions] = useState(false);
+  const [instructionText, setInstructionText] = useState('');
+
+  const toggleInstructionsModal = (instructions) => {
+    setInstructionText(instructions);
+    setShowInstructions(!showInstructions);
+  };
 
   React.useEffect(() => {
     fetch('/api/recipes')
@@ -29,6 +38,8 @@ export function Recipes() {
     });
   },  []);
 
+  showInstructionsModal
+
   const breakfastRows = [];
   const lunchRows = [];
   const dinnerRows = [];
@@ -50,7 +61,14 @@ export function Recipes() {
               <td className='meal-title'>{recipe.mealTitle}</td>
               <td>
                 <ul>
-                  {recipe.ingredients}
+                  {/* Check if recipe.ingredients exists and is a string before splitting */}
+                  {typeof recipe.ingredients === 'string' ? (
+                    recipe.ingredients.split('\n').map((ingredient, index) => (
+                      <li key={index}>{ingredient}</li>
+                    ))
+                  ) : (
+                    <li>No ingredients</li>
+                  )}
                 </ul>
               </td>
               <td>
@@ -63,8 +81,15 @@ export function Recipes() {
               </td>
             </tr>
             <tr className='link-row'>
-              <td>{recipe.instructions}</td>
-              <td>{recipe.reviewsLink}</td>
+              <td>
+                <a
+                  href="#"
+                  onClick={() => toggleInstructionsModal(recipe.instructions)}
+                >
+                  Instructions
+                </a>
+              </td>
+              <td><a href={recipe.reviewsLink}>Reviews</a></td>
               <td>{recipe.votes}</td>
             </tr>
           </tbody>
@@ -90,6 +115,14 @@ export function Recipes() {
       <br />
         <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newRecipeModal">Add Recipe</button>
       <br />
+
+      {showInstructions && (
+      <InstructionModal
+        instructionText={instructionText}
+        setShowInstructions={setShowInstructions}
+      />
+      )}
+
       <div className="body-container">
         <table id="table-container">
           <thead>

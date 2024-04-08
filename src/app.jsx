@@ -55,6 +55,7 @@ function App() {
           />
           <Route path='/recipes' element={<Recipes userName={userName}/>} />
           <Route path='/reviews' element={<Reviews />} />
+          <Route path='reveiws.html' element={<Reviews />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
 
