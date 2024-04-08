@@ -1,6 +1,6 @@
 import React from "react";
 
-function InstructionModal({ instructionText, setShowInstructions }) {
+export function InstructionModal({ instructionText, setShowInstructions }) {
   return (
     <div className="modal fade text-dark" id="instructionsModal" tabIndex="-1" aria-labelledby="instructionsModalLabel" aria-hidden="true">
       <div className="modal-dialog modal-dialog-centered" role="dialog">
@@ -17,5 +17,3 @@ function InstructionModal({ instructionText, setShowInstructions }) {
     </div>
   );
 }
-
-export default InstructionModal
