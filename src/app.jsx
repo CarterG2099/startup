@@ -6,13 +6,6 @@ import { Reviews } from './reviews/reviews';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-//   <BrowserRouter>
-//     <div className='body bg-dark text-light'></div>
-//   </BrowserRouter>
-// );
-
 export default function App() {
   return (
     <BrowserRouter>

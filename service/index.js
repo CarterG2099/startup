@@ -88,7 +88,8 @@ secureApiRouter.use(async (req, res, next) => {
 });
 
 // GetRecipes
-secureApiRouter.get('/recipes', async (_req, res) => {
+secureApiRouter.get('/recipes', async (req, res) => {
+  console.log("Entered Recipes API")
   const recipes = await DB.getRecipes();
   res.send(recipes);
 });
@@ -128,20 +129,6 @@ function setAuthCookie(res, authToken) {
   });
 }
 
-// app.listen(port, () => {
-//   console.log(`Listening on port ${port}`);
-// });
-
-// let recipes = [];
-
-// async function loadRecipes(){
-//   const response = await fetch('/api/recipes');
-// }
-
-// function updateRecipes(recipe, recipes){
-//   recipes.push(recipe);
-//   return recipes;
-// }
 const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
