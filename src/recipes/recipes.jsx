@@ -1,7 +1,6 @@
-  import React from 'react';
+  import React, {useEffect, useState} from 'react';
 
   import { InstructionModal } from './instructions';
-  import { useState } from 'react';
   import DisplayPicture from './pictures';
   import './recipes.css';
 
@@ -9,17 +8,58 @@
     const [recipes, setRecipes] = React.useState([]);
     const [showInstructions, setShowInstructions] = useState(false);
     const [instructionText, setInstructionText] = useState('');
+    const [socket, setSocket] = useState(null); // State to store the WebSocket connection
+
 
     const toggleInstructionsModal = (instructions) => {
       setInstructionText(instructions);
-      setShowInstructions(true); // Always set to true when instructions link is clicked
+      setShowInstructions(true);
     };
+
+    const upVote = (meal) => {
+      meal.votes += 1;
+      try {
+        fetch('/api/recipe', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(meal),
+        });
+        
+        // Check if WebSocket connection is open before sending message
+        if (socket && socket.readyState === WebSocket.OPEN) {
+          // Sending WebSocket message with the meal data
+          socket.send(JSON.stringify({ type: 'UpVote', meal }));
+        }
+      } catch (error) {
+        console.error(`Error loading recipes: ${error.message}`);
+        const storedRecipes = localStorage.getItem('apiRecipes');
+        if (storedRecipes) {
+          setRecipes(JSON.parse(storedRecipes));
+        }
+      }
+    };  
+    
+    useEffect(() => {
+      const ws = new WebSocket('ws://localhost:3000'); // Replace with your WebSocket server URL
+  
+      ws.onopen = () => {
+        console.log('WebSocket connection established.');
+        setSocket(ws);
+      };
+  
+      ws.onclose = () => {
+        console.log('WebSocket connection closed.');
+      };
+  
+      return () => {
+        ws.close();
+      };
+    }, []);
 
     React.useEffect(() => {
       fetch('/api/recipes')
       .then((response) => {
         console.log("Successful call")
-        // console.log("response: " + response.json())
         return response.json()
       })
       .then((recipes) => {
@@ -95,7 +135,7 @@
                 <td><a href={recipe.reviewsLink}>Reviews</a></td>
                 <td>
                   {recipe.votes}
-                  <button class="btn btn-primary">UpVote</button>
+                  <button className="btn btn-primary" onClick={() => upVote(recipe)}>UpVote</button>
                 </td>
               </tr>
             </tbody>

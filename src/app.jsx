@@ -13,6 +13,23 @@ function App() {
   const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
   const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
+  const http = require('http');
+  const { peerProxy } = require('../service/peerProxy.js');
+
+  // Create an HTTP server
+  const server = http.createServer((req, res) => {
+    // Your HTTP request handling logic here
+    res.end('Hello World!');
+  });
+
+  // Set up the WebSocket server using the HTTP server
+  peerProxy(server);
+
+  // Start listening on a port
+  const PORT = 3000;
+  server.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
 
   return (
     <BrowserRouter>
