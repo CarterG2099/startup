@@ -71,7 +71,15 @@ Trying to eat healthier or struggling to keep all of your favorite recipes organ
 - **Restricts Functionality** - You cannot add a recipe until logged in
 
 ## WebSocket Deliverable
+- **Backend listens for WebSocket connection** - done!
+- **Frontend makes WebSocket connection** - done!
+- **Data sent over WebSocket connection** - done!
+- **WebSocket data displayed** - All user votes display in realtime.
 
 ## React Deliverable
+- **Bundled and transpiled** - done
+- **Componenents** - Login, recipes page, images, reviews
+- **Router** - Routing between login and recipe components
+- **Hooks** - useEffect in recipes.jsx, reviews.jsx, pictures.jsx and useState in recipes.jsx
 
 ## Reference notes at [Notes](https://github.com/CarterG2099/startup/blob/main/notes.md)
