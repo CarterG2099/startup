@@ -4,7 +4,7 @@
   import DisplayPicture from './pictures';
   import './recipes.css';
 
-  export function Recipes({ socket }) {
+  export function Recipes() {
     const [recipes, setRecipes] = React.useState([]);
     const [showInstructions, setShowInstructions] = useState(false);
     const [instructionText, setInstructionText] = useState('');
@@ -22,21 +22,13 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(meal),
         });
-  
-        // Check if WebSocket connection is open before sending message
-        if (socket && socket.readyState === WebSocket.OPEN) {
-          // Sending WebSocket message with the meal data
-          socket.send(JSON.stringify({ type: 'UpVote', meal }));
-        }
+    
       } catch (error) {
         console.error(`Error loading recipes: ${error.message}`);
-        const storedRecipes = localStorage.getItem('apiRecipes');
-        if (storedRecipes) {
-          setRecipes(JSON.parse(storedRecipes));
-        }
+        // Handle error
       }
-    }; 
-
+    };
+    
     React.useEffect(() => {
       fetch('/api/recipes')
       .then((response) => {

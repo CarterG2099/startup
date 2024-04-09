@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Recipes } from './recipes/recipes';
@@ -8,33 +8,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/js/dist/modal';
 import './app.css';
-const { peerProxy } = require('../service/peerProxy.js');
+// const { peerProxy } = require('../service/peerProxy.js');
 
 function App() {
   const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
   const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
-  const [socket, setSocket] = useState(null); // State to store the WebSocket connection
-
-
-
-  useEffect(() => {
-    const ws = new WebSocket('ws://localhost:8080'); // Adjust the WebSocket URL accordingly
-
-    ws.onopen = function() {
-      console.log('WebSocket connection established');
-    };
-
-    ws.onmessage = function(event) {
-      console.log('Received message from server:', event.data);
-    };
-
-    setSocket(ws);
-
-    return () => {
-      ws.close();
-    };
-  }, []);
 
   return (
     <BrowserRouter>
@@ -77,7 +56,7 @@ function App() {
             } 
             exact 
           />
-          <Route path='/recipes' element={<Recipes socket={socket}/>} />
+          <Route path='/recipes' element={<Recipes />} />
           <Route path='/reviews' element={<Reviews />} />
           <Route path='reveiws.html' element={<Reviews />} />
           <Route path='*' element={<NotFound />} />
