@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Recipes } from './recipes/recipes';
@@ -8,28 +8,33 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/js/dist/modal';
 import './app.css';
+const { peerProxy } = require('../service/peerProxy.js');
 
 function App() {
   const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
   const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
-  const http = require('http');
-  const { peerProxy } = require('../service/peerProxy.js');
+  const [socket, setSocket] = useState(null); // State to store the WebSocket connection
 
-  // Create an HTTP server
-  const server = http.createServer((req, res) => {
-    // Your HTTP request handling logic here
-    res.end('Hello World!');
-  });
 
-  // Set up the WebSocket server using the HTTP server
-  peerProxy(server);
 
-  // Start listening on a port
-  const PORT = 3000;
-  server.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
+  useEffect(() => {
+    const ws = new WebSocket('ws://localhost:8080'); // Adjust the WebSocket URL accordingly
+
+    ws.onopen = function() {
+      console.log('WebSocket connection established');
+    };
+
+    ws.onmessage = function(event) {
+      console.log('Received message from server:', event.data);
+    };
+
+    setSocket(ws);
+
+    return () => {
+      ws.close();
+    };
+  }, []);
 
   return (
     <BrowserRouter>
@@ -72,7 +77,7 @@ function App() {
             } 
             exact 
           />
-          <Route path='/recipes' element={<Recipes userName={userName}/>} />
+          <Route path='/recipes' element={<Recipes socket={socket}/>} />
           <Route path='/reviews' element={<Reviews />} />
           <Route path='reveiws.html' element={<Reviews />} />
           <Route path='*' element={<NotFound />} />

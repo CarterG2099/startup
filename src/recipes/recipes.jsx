@@ -4,12 +4,10 @@
   import DisplayPicture from './pictures';
   import './recipes.css';
 
-  export function Recipes() {
+  export function Recipes({ socket }) {
     const [recipes, setRecipes] = React.useState([]);
     const [showInstructions, setShowInstructions] = useState(false);
     const [instructionText, setInstructionText] = useState('');
-    const [socket, setSocket] = useState(null); // State to store the WebSocket connection
-
 
     const toggleInstructionsModal = (instructions) => {
       setInstructionText(instructions);
@@ -24,7 +22,7 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(meal),
         });
-        
+  
         // Check if WebSocket connection is open before sending message
         if (socket && socket.readyState === WebSocket.OPEN) {
           // Sending WebSocket message with the meal data
@@ -37,24 +35,7 @@
           setRecipes(JSON.parse(storedRecipes));
         }
       }
-    };  
-    
-    useEffect(() => {
-      const ws = new WebSocket('ws://localhost:3000'); // Replace with your WebSocket server URL
-  
-      ws.onopen = () => {
-        console.log('WebSocket connection established.');
-        setSocket(ws);
-      };
-  
-      ws.onclose = () => {
-        console.log('WebSocket connection closed.');
-      };
-  
-      return () => {
-        ws.close();
-      };
-    }, []);
+    }; 
 
     React.useEffect(() => {
       fetch('/api/recipes')
