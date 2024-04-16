@@ -159,6 +159,15 @@
 - Testing - Automated tests at multiple levels to ensure correctness.
 - Deployment - Automated packaging and delivery of code from the development environment to the production environment.
 
+## Review
+- Daemon: start when computer reboots, runs without a user, forks other processes, PM2 is an example of a daemon
+- HTTP: 80
+- SSH: 22
+- HTTPS: 443
+- JSX: Combines HTML CSS, Componentize/Cmoposability
+- NPM install was: Locks version of ws package, adds dependency to package.json, adds ws source code to node_modules directory
+- 
+
 ## Console Command List
 - echo - Output the parameters of the command
 - cd - Change directory
